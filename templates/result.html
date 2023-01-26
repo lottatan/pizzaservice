@@ -1,0 +1,13 @@
+<p>
+    Valitsit seuraavat pizzat:
+
+    <ol>
+        {% for pizza in pizzat %}
+        <li> {{ pizza }}
+        {% endfor %}
+        </ol>
+        <br>
+        <br>
+        Erikoistoiveet: <br>
+        {{ message }}
+
