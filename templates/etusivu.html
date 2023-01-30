@@ -14,7 +14,18 @@ Tästä voit mennä tarkastelemaan <a href="https://fi.images.search.yahoo.com/y
 <p>
 Voit siirtyä tilaamaan <a href="http://127.0.0.1:5000/order">tästä</a>.
 
+<p>
+Voit siirtyä omaan profiiliin <a href="http://127.0.0.1:5000/profile">tästä</a>
+</p>
+
 <h2>Kommentteja</h2>
+
+<hr>
+{% for comment in kommentit %}
+{{ comment.comment }}
+<hr>
+{% endfor %}
+
 <ul>
   <li> Super hyvä
   <li> Semi huono

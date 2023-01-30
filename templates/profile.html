@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% if session.username %}
+<p>Hei {{ session.username }} !</p>
+<br>
+<p>Suosikkipizzasi ovat:</p>
+<br>
+<p>Suosikkijuomasi on:</p>
+<br>
+<p>Tilaushistoriasi:</p>
+<br>
+<p>Jätä meille arvostelu!</p>
+<p>Anna palautetta! Palautteet näkyvät etusivullamme.</p>
+
+<form action="/send" method="POST">
+    Viesti: <br>
+    <textarea name="content" rows="3" cols="40"></textarea>
+    <br>
+    <input type="submit" value="Lähetä">
+</form>
+    
+
+<a href="/logout">Kirjaudu ulos</a>
+{% else %}
+
+<form action="/login" method="POST">
+<p>Tunnus:<br>
+<input type="text" name="username"></p>
+<p>Salasana:<br>
+<input type="password" name="password"></p>
+<input type="submit" value="Kirjaudu">
+</form>
+<br>
+<p> Etkö ole vielä rekisteröitynyt? Rekisteröidy tästä!</p>
+
+<a href="/create">Rekisteröidy</a>
+
+{% endif %}
