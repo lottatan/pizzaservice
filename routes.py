@@ -1,6 +1,6 @@
 from app import app
 import users
-import comments
+import kommentit
 from flask import render_template, request, redirect
 from db import db
 
@@ -11,7 +11,7 @@ def index():
 @app.route("/send", methods=["POST"])
 def send():
     kommentti = request.form("kommentti")
-    if comments.send(kommentti):
+    if kommentit.add_comment(kommentti):
         return redirect("/")
     else:
         return render_template("error.html", message="Viestin lähetys ei onnistunut")
@@ -42,6 +42,7 @@ def login():
         
         else:
             return render_template("error.html", message="Väärä tunnus tai salasana")
+        
 
 @app.route("/create", methods=["GET", "POST"])
 def create():
@@ -71,18 +72,14 @@ def new():
         return render_template("profile.html")
 
     if request.method == "POST":
-
         kommentti = request.form["kommentti"]
-
         if len(kommentti) > 100:
             return render_template("/error.html", message="Kommentti on liian pitkä")
-        
-        user = users.username()
-
+        user = users.user_id()
         if user:
-            comments.add_comment(user, kommentti)
+            kommentit.add_comment(user, kommentti)
 
 @app.route("/comments")
 def comments():
-    kommentit = comments.get_list()
-    return render_template("comments.html", kommentit=kommentit)
+    kommentit1 = kommentit.get_list()
+    return render_template("comments.html", kommentit=kommentit1)

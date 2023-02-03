@@ -13,25 +13,27 @@ def create(username, password):
     except:
         return False
     return login(username, password)
+
     
 def login(username, password):
-    sql = text("SELECT password FROM users WHERE username=:username")
+    sql = text("SELECT id, password FROM users WHERE username=:username")
     result = db.session.execute(sql, {"username":username})
     user = result.fetchone()
     if not user:
         return False
     else:
         if check_password_hash(user.password, password):
-            session["username"] = user.username
+            session["user_id"] = user.id
             return True
         else:
             return False
 
+
 def logout():
     try:
-        del session["username"]
+        del session["user_id"]
     except:
         return
 
-def username():
-    return session("username", 0)
+def user_id():
+    return session("user_id", 0)

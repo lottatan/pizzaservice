@@ -3,7 +3,7 @@ from db import db
 
 def get_list():
     sql = text("SELECT comment, username, posted FROM comments")
-    result = db.session.execute(sql)
+    result = db.execute(sql)
     return result.fetchall()
 
 def add_comment(username, comment):

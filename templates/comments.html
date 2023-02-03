@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 
-<h2> Kommentit </h2>
+<p>
+    Kommentit:
 
-<hr>
-{% for kommentti in kommentit %}
-{{ kommentti.username } julkaisi { kommentti.posted }: { kommentti.comment }}
-<hr>
-{% endfor %}
+    <ol>
+        {% for kommentti in kommentit %}
+        <li> {{ kommentti.username } julkaisi { kommentti.posted}:  { kommentti.comment}}
+        {% endfor %}
+        </ol>
+        <br>
