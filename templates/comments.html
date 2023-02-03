@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+
+<h2> Kommentit </h2>
+
+<hr>
+{% for kommentti in kommentit %}
+{{ kommentti.username } julkaisi { kommentti.posted }: { kommentti.comment }}
+<hr>
+{% endfor %}
