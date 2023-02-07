@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% if session.username %}
+{% if session.user_id %}
 <p>Hei {{ session.username }} !</p>
 <br>
 <p>Suosikkipizzasi ovat:</p>
@@ -20,16 +20,15 @@
     
 
 <a href="/logout">Kirjaudu ulos</a>
+
 {% else %}
 
-<form action="/login" method="POST">
-<p>Tunnus:<br>
-<input type="text" name="username"></p>
-<p>Salasana:<br>
-<input type="password" name="password"></p>
-<input type="submit" value="Kirjaudu">
-</form>
+<p> Kirjaudu sisään</p>
+
+<a href="/login">Kirjaudu</a>
+
 <br>
+
 <p> Etkö ole vielä rekisteröitynyt? Rekisteröidy tästä!</p>
 
 <a href="/create">Rekisteröidy</a>
