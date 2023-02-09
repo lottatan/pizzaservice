@@ -5,7 +5,7 @@
 
     <ol>
         {% for kommentti in kommentit %}
-        <li> {{ kommentti.username } julkaisi { kommentti.posted}:  { kommentti.comment}}
+        <li> {{ kommentti.username }} julkaisi {{ kommentti.posted }}:  {{ kommentti.comment }}
         {% endfor %}
         </ol>
         <br>

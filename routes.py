@@ -12,7 +12,9 @@ def index():
 def profile():
     return render_template("profile.html")
 
-@app.route("/login", methods=["POST", "GET"])
+
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
         return render_template("login.html")
@@ -21,7 +23,7 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         if users.login(username, password):
-            return redirect("/profile")
+            return redirect("/")
         
         return render_template("error.html", message="Väärä tunnus tai salasana")
         
@@ -39,7 +41,7 @@ def create():
         if len(password) == 0:
             return render_template("error.html", message="Syötä salasana")
         if users.create(username, password):
-            return redirect("/profile")
+            return redirect("/")
         else:
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
 
@@ -54,18 +56,20 @@ def comments():
     kommentit1 = kommentit.get_list()
     return render_template("comments.html", kommentit=kommentit1)
 
-@app.route("/send", methods=["POST", "GET"])
+@app.route("/send", methods=["GET", "POST"])
 def send():
     if request.method == "GET":
-        return render_template("profile.html")
+        return render_template("send.html")
 
     if request.method == "POST":
+        # users.check_csrf()
+
         kommentti = request.form["kommentti"]
         if len(kommentti) > 100:
             return render_template("/error.html", message="Kommentti on liian pitkä")
-        user = users.username()
-        if user:
-            kommentit.add_comment(user, kommentti)
+        
+        if kommentit.add_comment(kommentti):
+            return render_template("profile.html")
 
 @app.route("/order")
 def order():
