@@ -10,7 +10,7 @@ CREATE TABLE comments(
     posted TIMESTAMP
 );
 
-CREATE TABLE rating(
+CREATE TABLE ratings(
     username TEXT,
     rating INTEGER,
     posted TIMESTAMP

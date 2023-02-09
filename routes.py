@@ -55,7 +55,8 @@ def logout():
 @app.route("/comments")
 def comments():
     kommentit1 = kommentit.get_list()
-    return render_template("comments.html", kommentit=kommentit1)
+    rating = kommentit.get_average_rating()
+    return render_template("comments.html", kommentit=kommentit1, rating=rating)
 
 @app.route("/send", methods=["GET", "POST"])
 def send():
@@ -71,6 +72,19 @@ def send():
         
         if kommentit.add_comment(kommentti):
             return render_template("profile.html")
+
+@app.route("/rate", methods=["GET", "POST"])
+def rate():
+    if request.method == "GET":
+        return render_template("rate.html")
+    if request.method == "POST":
+        # users.check_csrf()
+
+        rating = request.form["rating"]
+        if kommentit.add_rating(rating):
+            return render_template("profile.html")
+        
+        return render_template("/error.html", message="Arvostelu ei onnistunut")
 
 @app.route("/order")
 def order():
