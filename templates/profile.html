@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-{% if session.user_id %}
+{% extends "layout.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+{% if session.username %}
 <p>Hei {{ session.username }} !</p>
 <br>
 <p>Suosikkipizzasi ovat:</p>
@@ -9,29 +13,31 @@
 <p>Tilaushistoriasi:</p>
 <br>
 <p>Jätä meille arvostelu!</p>
+<p>Anna palautetta! Palautteet näkyvät etusivullamme.</p>
 
-<a href="/send">Anna palautetta! Palautteet näkyvät etusivullamme. </a>
-<br>
-<br>
-<p>Jätäthän myös meille arvosanan!</p>
-<a href="/rate">Anna arvosana! </a>
-
-
-<br>
-
+<form action="/send" method="POST">
+    Viesti: <br>
+    <textarea name="kommentti" rows="3" cols="50" minlength="1" maxlength="100"></textarea>
+    <br>
+    <input type="submit" value="Lähetä">
+</form>
+    
 
 <a href="/logout">Kirjaudu ulos</a>
-
 {% else %}
 
-<p> Kirjaudu sisään</p>
-
-<a href="/login">Kirjaudu</a>
-
+<form action="/login" method="POST">
+<p>Tunnus:<br>
+<input type="text" name="username"></p>
+<p>Salasana:<br>
+<input type="password" name="password"></p>
+<input type="submit" value="Kirjaudu">
+</form>
 <br>
-
 <p> Etkö ole vielä rekisteröitynyt? Rekisteröidy tästä!</p>
 
 <a href="/create">Rekisteröidy</a>
 
 {% endif %}
+
+{% endblock %}

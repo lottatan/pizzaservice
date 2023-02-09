@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> PizzaService - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+
+        <h1> PizzaService</h1>
+        
+        <a href="/">Etusivu</a></li>
+        <a href="/profile">Profiilisi</a>
+        <a href="/order">Tilaa tästä</a>
+        <a href="/comments">Tarkastele arvosteluja</a>
+
+        {% block content %}{% endblock %}
+
+    </body>
+</html>

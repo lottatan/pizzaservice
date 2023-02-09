@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<title>Testisivu</title>
-<h1>Tervetuloa online pizzapalveluun!</h1>
-<p>
+{% extends "layout.html" %}
+{% block title %}Etusivu{% endblock %}
+{% block content %}
+
+<body>
+    <h1>Tervetuloa online pizzapalveluun!</h1>
+    <p>
 Online pizzapalvelustamme voit tilata erilaisia pizzoja ja juomia <b>suoraan kotiovelle</b>.
 <p>
 Jotta pääset tilaamaan ja maistamaan herkullisia tuotteitamme, sinun täytyy luoda käyttäjä.
@@ -24,3 +28,5 @@ Siirry tarkastelemaan arvosteluja <a href="http://127.0.0.1:5000/comments">täst
 </p>
 <hr>
 Sivu päättyy tähän.
+
+{% endblock %}

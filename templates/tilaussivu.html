@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+{% extends "layout.html" %}
+{% block title %}Tilaussivu{% endblock %}
+{% block content %}
+
 <form action="/result" method="POST">
     Valitse haluamasi pizzat:
     <p>
@@ -16,4 +20,5 @@
     <p>
     <input type="submit" value="Lähetä">
     </form>
-    
+
+    {% endblock %}
