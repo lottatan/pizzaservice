@@ -3,6 +3,7 @@ import users
 import kommentit
 from flask import render_template, request, redirect
 from db import db
+import orders
 
 @app.route("/")
 def index():
@@ -23,7 +24,7 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         if users.login(username, password):
-            return redirect("/")
+            return redirect("/profile")
         
         return render_template("error.html", message="Väärä tunnus tai salasana")
         
@@ -41,7 +42,7 @@ def create():
         if len(password) == 0:
             return render_template("error.html", message="Syötä salasana")
         if users.create(username, password):
-            return redirect("/")
+            return redirect("/profile")
         else:
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
 
@@ -79,4 +80,7 @@ def order():
 def result():
     pizzat = request.form.getlist("pizza")
     message = request.form["message"]
-    return render_template("result.html", pizzat=pizzat, message=message)
+    if orders.add_order(pizzat):
+        return render_template("result.html", pizzat=pizzat, message=message)
+    else:
+        return render_template("error.html", message="Tilaus ei onnistunut")

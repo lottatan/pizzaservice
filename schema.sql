@@ -9,3 +9,15 @@ CREATE TABLE comments(
     comment TEXT,
     posted TIMESTAMP
 );
+
+CREATE TABLE rating(
+    username TEXT,
+    rating INTEGER,
+    posted TIMESTAMP
+);
+
+CREATE TABLE orders(
+    username TEXT,
+    amount INTEGER,
+    ordered TIMESTAMP
+);
