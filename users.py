@@ -39,10 +39,10 @@ def logout():
         return
 
 def user_id():
-    return session["user_id"]
+    return session.get("user_id", 0)
 
 def username():
-    return session["username"]
+    return session.get("username")
 
 # def check_csrf():
 #     if session["csrf_token"] != request.form["csrf_token"]:

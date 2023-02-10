@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<br>
+<p>
+<a href="http://127.0.0.1:5000/profile">Takaisin</a>
+</p>
+
+
+
+<p>Suosikkipizzasi on:</p>
+<br>
+
+    {{ favorite_pizza }}
+
+</p>
+
+<p>Suosikkijuomasi on:</p>
+<br>
+
+<p>Olet käyttänyt yhteensä:
+<br>
+    
+    {{ spent }}     euroa
+</p>
+
+<p>Tilaushistoriasi:</p>
+<br>
+
+<ol>
+    {% for item in list %}
+    <li> {{ item.ordered}}:  summa  {{ item.amount }} euroa
+    {% endfor %}
+    </ol>
+<br>

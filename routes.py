@@ -98,3 +98,11 @@ def result():
         return render_template("result.html", pizzat=pizzat, message=message)
     else:
         return render_template("error.html", message="Tilaus ei onnistunut")
+    
+@app.route("/personal_stats")
+def personal_stats():
+    username = users.username()
+    spent = orders.user_total_spending(username)
+    list = orders.all_user_orders(username)
+    favorite_pizza = orders.get_favorite_pizza(username)
+    return render_template("personal_stats.html", spent=spent, list=list, favorite_pizza=favorite_pizza)
