@@ -3,6 +3,9 @@
 {% block title %}Tilaussivu{% endblock %}
 {% block content %}
 
+Voit valita maksimissaan 5 jokaista pizzaa ja juomaa. Jokainen pizza maksaa 15 euroa ja jokainen juoma maksaa 3 euroa.
+Tilaus maksetaan toimituksen yhteydessä.
+
 <form action="/result" method="POST">
     Valitse haluamasi pizzat:
     <p>
@@ -14,6 +17,18 @@
     6. Quattro Formaggi     <input type="range" name="pizza" value="0" min= "0" max= "5" step="1"> <br>
     <br>
     <br>
+
+
+    Valitse haluamasi juomat:
+    <p>
+    1. Coca-Cola            <input type="range" name="drink" value="0" min= "0" max= "5" step="1"> <br>
+    2. Coca-Cola Zero       <input type="range" name="drink" value="0" min= "0" max= "5" step="1"> <br>
+    3. Pepsi                <input type="range" name="drink" value="0" min= "0" max= "5" step="1"> <br>
+    4. Pepsi Max            <input type="range" name="drink" value="0" min= "0" max= "5" step="1"> <br>
+    5. Fanta                <input type="range" name="drink" value="0" min= "0" max= "5" step="1"> <br>
+    6. Sprite               <input type="range" name="drink" value="0" min= "0" max= "5" step="1"> <br>
+
+    </p>
 
     Mikäli sinulla on allergioita tai erikoistoiveita, lisää ne alla olevaan tekstikenttään, niin keittiömme osaa ottaa ne huomioon! <br>
     <textarea name="message" rows="3" cols="50"></textarea>

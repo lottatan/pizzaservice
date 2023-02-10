@@ -40,6 +40,43 @@ def add_order(list):
     db.session.commit()
     return True
 
+def add_drink_order(list):
+    user_id = users.user_id()
+    if user_id == "0":
+        username = "anonymous"
+    else:
+        username = users.username()
+    
+    summa = 0
+    i = 1
+
+    for item in list:
+        summa += int(item)*3
+        if int(item) > 0:
+            for j in range(int(item)):
+                if i == 1:
+                    drink = "Coca-Cola"
+                elif i == 2:
+                    drink = "Coca-Cola Zero"
+                elif i == 3:
+                    drink = "Pepsi"
+                elif i == 4:
+                    drink = "Pepsi Max"
+                elif i == 5:
+                    drink = "Fanta"
+                elif i == 6:
+                    drink = "Sprite"
+                sql = text("INSERT INTO drink_orders (username, drink) VALUES (:username, :drink)")
+                db.session.execute(sql, {"username":username, "drink":drink})
+                db.session.commit()
+        i += 1
+
+    sql = text("INSERT INTO orders (username, amount, ordered) VALUES (:username, :amount, NOW())")
+    db.session.execute(sql, {"username":username, "amount":summa, "ordered":datetime.datetime.now()})
+    db.session.commit()
+    return True
+
+
 def user_total_spending(username):
     sql = text("SELECT SUM(amount) FROM orders WHERE username=:username")
     result = db.session.execute(sql, {"username": username})
@@ -52,5 +89,10 @@ def all_user_orders(username):
 
 def get_favorite_pizza(username):
     sql = text("SELECT pizza FROM pizza_orders WHERE username=:username GROUP BY pizza ORDER BY COUNT(pizza) DESC LIMIT 1")
+    result = db.session.execute(sql, {"username": username})
+    return result.fetchone()
+
+def get_favorite_drink(username):
+    sql = text("SELECT drink FROM drink_orders WHERE username=:username GROUP BY drink ORDER BY COUNT(drink) DESC LIMIT 1")
     result = db.session.execute(sql, {"username": username})
     return result.fetchone()

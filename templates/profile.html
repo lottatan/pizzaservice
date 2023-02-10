@@ -9,14 +9,37 @@
 
 <p>Tarkastele tilaushistoriaasi <a href="/personal_stats">tästä</a></p>
 
+
+
 <p>Jätä meille arvostelu!</p>
+
+<form action="/rate" method="POST">
+
+
 <p>Anna palautetta! Palautteet näkyvät etusivullamme.</p>
 
-<form action="/send" method="POST">
-    Viesti: <br>
-    <textarea name="kommentti" rows="3" cols="50" minlength="1" maxlength="100"></textarea>
+    Anna meille arvosana:
+
+    <input type="radio" name="rating" value="1"> 1
+    <input type="radio" name="rating" value="2"> 2
+    <input type="radio" name="rating" value="3"> 3
+    <input type="radio" name="rating" value="4"> 4
+    <input type="radio" name="rating" value="5"> 5
+
     <br>
+
     <input type="submit" value="Lähetä">
+<p>
+
+</form>
+
+<form action="/send" method="POST">
+        Viesti: <br>
+        <textarea name="kommentti" rows="3" cols="50" minlength="1" maxlength="100"></textarea>
+        <br>
+
+    <input type="submit" value="Lähetä">
+
 </form>
     
 

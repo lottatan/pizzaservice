@@ -19,12 +19,12 @@ def add_comment(comment):
 
 def add_rating(rating):
     username = users.username()
-    sql = text("INSERT INTO rating (username, rating, posted) VALUES (:username, :rating, NOW())")
+    sql = text("INSERT INTO ratings (username, rating, posted) VALUES (:username, :rating, NOW())")
     db.session.execute(sql, {"username":username, "rating":rating, "posted":datetime.datetime.now()})
     db.session.commit()
     return True
 
 def get_average_rating():
-    sql = text("SELECT ROUND(AVG(rating),0) as avg_rating FROM rating")
+    sql = text("SELECT ROUND(AVG(rating),0) as avg_rating FROM ratings")
     result = db.session.execute(sql)
     return result.fetchone()

@@ -72,11 +72,11 @@ def send():
         
         if kommentit.add_comment(kommentti):
             return render_template("profile.html")
-
+        
 @app.route("/rate", methods=["GET", "POST"])
 def rate():
     if request.method == "GET":
-        return render_template("rate.html")
+        return render_template("profile.html")
     if request.method == "POST":
         # users.check_csrf()
 
@@ -93,9 +93,10 @@ def order():
 @app.route("/result", methods=["POST"])
 def result():
     pizzat = request.form.getlist("pizza")
+    drinks = request.form.getlist("drink")
     message = request.form["message"]
-    if orders.add_order(pizzat):
-        return render_template("result.html", pizzat=pizzat, message=message)
+    if orders.add_order(pizzat) and orders.add_drink_order(drinks):
+        return render_template("result.html", pizzat=pizzat, message=message, drinks=drinks)
     else:
         return render_template("error.html", message="Tilaus ei onnistunut")
     
@@ -105,4 +106,5 @@ def personal_stats():
     spent = orders.user_total_spending(username)
     list = orders.all_user_orders(username)
     favorite_pizza = orders.get_favorite_pizza(username)
-    return render_template("personal_stats.html", spent=spent, list=list, favorite_pizza=favorite_pizza)
+    favorite_drink = orders.get_favorite_drink(username)
+    return render_template("personal_stats.html", spent=spent, list=list, favorite_pizza=favorite_pizza, favorite_drink=favorite_drink)
