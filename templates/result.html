@@ -1,5 +1,15 @@
+<!DOCTYPE html>
+
+<br>
+<p>
+<a href="http://127.0.0.1:5000/">Takaisin</a>
+</p>
+
+
+
 <p>
     Valitsit seuraavat pizzat:
+    <br>
 
     <ol>
         {% for pizza in pizzat %}
@@ -9,6 +19,7 @@
         <br>
         <br>
 
+    <ol>
         {% for drink in drinks %}
         <li> {{ drink }}
         {% endfor %}
@@ -19,4 +30,9 @@
 
         Erikoistoiveet: <br>
         {{ message }}
+        <br>
+        <br>
+
+        Osoite ja saapumisohjeet: <br>
+        {{ address }}
 

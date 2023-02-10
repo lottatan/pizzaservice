@@ -3,6 +3,8 @@
 {% block title %}Profile{% endblock %}
 {% block content %}
 
+<a href="http://127.0.0.1:5000/">Takaisin</a>
+
 {% if session.username %}
 <p>Hei {{ session.username }} !</p>
 <br>
@@ -25,8 +27,6 @@
     <input type="radio" name="rating" value="3"> 3
     <input type="radio" name="rating" value="4"> 4
     <input type="radio" name="rating" value="5"> 5
-
-    <br>
 
     <input type="submit" value="Lähetä">
 <p>

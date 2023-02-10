@@ -13,12 +13,10 @@ def index():
 def profile():
     return render_template("profile.html")
 
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
-        return render_template("login.html")
+        return render_template("profile.html")
     
     if request.method == "POST":
         username = request.form["username"]
@@ -28,7 +26,6 @@ def login():
         
         return render_template("error.html", message="Väärä tunnus tai salasana")
         
-
 @app.route("/create", methods=["GET", "POST"])
 def create():
     if request.method == "GET":
@@ -46,7 +43,6 @@ def create():
         else:
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
 
-
 @app.route("/logout")
 def logout():
     users.logout()
@@ -61,7 +57,7 @@ def comments():
 @app.route("/send", methods=["GET", "POST"])
 def send():
     if request.method == "GET":
-        return render_template("send.html")
+        return render_template("profile.html")
 
     if request.method == "POST":
         # users.check_csrf()
@@ -95,8 +91,9 @@ def result():
     pizzat = request.form.getlist("pizza")
     drinks = request.form.getlist("drink")
     message = request.form["message"]
+    address = request.form["address"]
     if orders.add_order(pizzat) and orders.add_drink_order(drinks):
-        return render_template("result.html", pizzat=pizzat, message=message, drinks=drinks)
+        return render_template("result.html", pizzat=pizzat, message=message, drinks=drinks, address=address)
     else:
         return render_template("error.html", message="Tilaus ei onnistunut")
     

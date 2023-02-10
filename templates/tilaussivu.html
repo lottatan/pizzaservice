@@ -3,6 +3,8 @@
 {% block title %}Tilaussivu{% endblock %}
 {% block content %}
 
+<a href="http://127.0.0.1:5000/">Takaisin</a>
+
 Voit valita maksimissaan 5 jokaista pizzaa ja juomaa. Jokainen pizza maksaa 15 euroa ja jokainen juoma maksaa 3 euroa.
 Tilaus maksetaan toimituksen yhteydessä.
 
@@ -27,13 +29,20 @@ Tilaus maksetaan toimituksen yhteydessä.
     4. Pepsi Max            <input type="range" name="drink" value="0" min= "0" max= "5" step="1"> <br>
     5. Fanta                <input type="range" name="drink" value="0" min= "0" max= "5" step="1"> <br>
     6. Sprite               <input type="range" name="drink" value="0" min= "0" max= "5" step="1"> <br>
-
     </p>
+    <br>
+    <br>
 
     Mikäli sinulla on allergioita tai erikoistoiveita, lisää ne alla olevaan tekstikenttään, niin keittiömme osaa ottaa ne huomioon! <br>
     <textarea name="message" rows="3" cols="50"></textarea>
+    <br>
+    <br>
+    Anna osoite ja tarkemmat saapumisohjeet <br>
+    <textarea name="address" rows="3" cols="50"></textarea>
     <p>
+    <br>
     <input type="submit" value="Lähetä">
+
     </form>
 
 {% endblock %}
