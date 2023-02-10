@@ -11,11 +11,11 @@ def add_order(list):
     else:
         username = users.username()
 
-    summa = 0
+    sum = 0
     i = 1
 
     for item in list:
-        summa += int(item)*15
+        sum += int(item)*15
         if int(item) > 0:
             for j in range(int(item)):
                 if i == 1:
@@ -36,7 +36,7 @@ def add_order(list):
         i += 1
 
     sql = text("INSERT INTO orders (username, amount, ordered) VALUES (:username, :amount, NOW())")
-    db.session.execute(sql, {"username":username, "amount":summa, "ordered":datetime.datetime.now()})
+    db.session.execute(sql, {"username":username, "amount":sum, "ordered":datetime.datetime.now()})
     db.session.commit()
     return True
 
@@ -47,11 +47,11 @@ def add_drink_order(list):
     else:
         username = users.username()
     
-    summa = 0
+    sum = 0
     i = 1
 
     for item in list:
-        summa += int(item)*3
+        sum += int(item)*3
         if int(item) > 0:
             for j in range(int(item)):
                 if i == 1:
@@ -72,7 +72,7 @@ def add_drink_order(list):
         i += 1
 
     sql = text("INSERT INTO orders (username, amount, ordered) VALUES (:username, :amount, NOW())")
-    db.session.execute(sql, {"username":username, "amount":summa, "ordered":datetime.datetime.now()})
+    db.session.execute(sql, {"username":username, "amount":sum, "ordered":datetime.datetime.now()})
     db.session.commit()
     return True
 

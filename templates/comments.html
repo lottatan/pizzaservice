@@ -12,8 +12,8 @@
     Kommentit:
 
     <ol>
-        {% for kommentti in kommentit %}
-        <li> {{ kommentti.username }} julkaisi {{ kommentti.posted }}:  {{ kommentti.comment }}
+        {% for comment in commentslist %}
+        <li> {{ comment.username }} julkaisi {{ comment.posted }}:  {{ comment.comment }}
         {% endfor %}
         </ol>
         <br>

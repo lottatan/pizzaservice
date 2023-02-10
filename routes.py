@@ -1,13 +1,13 @@
 from app import app
 import users
-import kommentit
+import comments
 from flask import render_template, request, redirect
 from db import db
 import orders
 
 @app.route("/")
 def index():
-    return render_template("etusivu.html")
+    return render_template("frontpage.html")
 
 @app.route("/profile")
 def profile():
@@ -49,10 +49,10 @@ def logout():
     return redirect("/")
 
 @app.route("/comments")
-def comments():
-    kommentit1 = kommentit.get_list()
-    rating = kommentit.get_average_rating()
-    return render_template("comments.html", kommentit=kommentit1, rating=rating)
+def comments_route():
+    commentslist = comments.get_list()
+    rating = comments.get_average_rating()
+    return render_template("comments.html", commentslist=commentslist, rating=rating)
 
 @app.route("/send", methods=["GET", "POST"])
 def send():
@@ -62,11 +62,11 @@ def send():
     if request.method == "POST":
         # users.check_csrf()
 
-        kommentti = request.form["kommentti"]
-        if len(kommentti) > 100:
+        comment = request.form["comment"]
+        if len(comment) > 100:
             return render_template("/error.html", message="Kommentti on liian pitkä")
         
-        if kommentit.add_comment(kommentti):
+        if comments.add_comment(comment):
             return render_template("profile.html")
         
 @app.route("/rate", methods=["GET", "POST"])
@@ -77,23 +77,23 @@ def rate():
         # users.check_csrf()
 
         rating = request.form["rating"]
-        if kommentit.add_rating(rating):
+        if comments.add_rating(rating):
             return render_template("profile.html")
         
         return render_template("/error.html", message="Arvostelu ei onnistunut")
 
 @app.route("/order")
 def order():
-    return render_template("tilaussivu.html")
+    return render_template("order.html")
 
 @app.route("/result", methods=["POST"])
 def result():
-    pizzat = request.form.getlist("pizza")
+    pizzas = request.form.getlist("pizza")
     drinks = request.form.getlist("drink")
     message = request.form["message"]
     address = request.form["address"]
-    if orders.add_order(pizzat) and orders.add_drink_order(drinks):
-        return render_template("result.html", pizzat=pizzat, message=message, drinks=drinks, address=address)
+    if orders.add_order(pizzas) and orders.add_drink_order(drinks):
+        return render_template("result.html", pizzas=pizzas, message=message, drinks=drinks, address=address)
     else:
         return render_template("error.html", message="Tilaus ei onnistunut")
     
