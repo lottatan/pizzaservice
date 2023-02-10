@@ -80,7 +80,7 @@ def add_drink_order(list):
 def user_total_spending(username):
     sql = text("SELECT SUM(amount) FROM orders WHERE username=:username")
     result = db.session.execute(sql, {"username": username})
-    return result.fetchone()
+    return result.fetchone()[0]
 
 def all_user_orders(username):
     sql = text("SELECT amount, ordered FROM orders WHERE username=:username")
@@ -90,9 +90,9 @@ def all_user_orders(username):
 def get_favorite_pizza(username):
     sql = text("SELECT pizza FROM pizza_orders WHERE username=:username GROUP BY pizza ORDER BY COUNT(pizza) DESC LIMIT 1")
     result = db.session.execute(sql, {"username": username})
-    return result.fetchone()
+    return result.fetchone()[0]
 
 def get_favorite_drink(username):
     sql = text("SELECT drink FROM drink_orders WHERE username=:username GROUP BY drink ORDER BY COUNT(drink) DESC LIMIT 1")
     result = db.session.execute(sql, {"username": username})
-    return result.fetchone()
+    return result.fetchone()[0]

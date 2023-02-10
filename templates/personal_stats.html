@@ -8,23 +8,25 @@
 
 
 <p>Suosikkipizzasi on:</p>
-<br>
     {{ favorite_pizza }}
-
+<br>
+<br>
 </p>
 
 <p>Suosikkijuomasi on:</p>
-<br>
-    {{ favorite_drink }}
 
-<p>Olet käyttänyt yhteensä:
+    {{ favorite_drink }}
 <br>
+<br>
+
+<p>Olet käyttänyt yhteensä:</p>
     
     {{ spent }}     euroa
+<br>
+<br>
 </p>
 
 <p>Tilaushistoriasi:</p>
-<br>
 
 <ol>
     {% for item in list %}

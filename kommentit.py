@@ -27,4 +27,4 @@ def add_rating(rating):
 def get_average_rating():
     sql = text("SELECT ROUND(AVG(rating),0) as avg_rating FROM ratings")
     result = db.session.execute(sql)
-    return result.fetchone()
+    return result.fetchone()[0]
