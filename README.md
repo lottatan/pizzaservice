@@ -30,17 +30,31 @@ Tilauksessa voi valita 0-5 kappaletta jokaista pizzaa ja juomaa. Tilaajan täyty
 
 2. Luo uusi ".env" -niminen tiedosto hakemiston juureen ja lisää sinne seuraavat tiedot:
 
-    DATABASE_URL= tietokannan-paikallinen-osoite
-    SECRET_KEY= salainen-avain
+    - DATABASE_URL= <tietokannan-paikallinen-osoite>
+    - SECRET_KEY= <salainen-avain>
+
 
 3. Aktivoi virtuaaliympäristö ja asenna sovellukseen riippuvuudet:
 
         $ python3 -m venv venv
         $ source venv/bin/activate
 
-4. Lisää myös requirements tiedosto ja määritä tietokanta:
+4. Lisää myös requirements tiedosto:
         
-        $ pip install -r ./requirements.txt
-        $ psql < schema.sql
+        venv $ pip install -r ./requirements.txt
 
-5. Käynnistä sovellus komennolla "flask run"
+4. Jos et ole vielä asentanut psql toimintoja koneellesi, tee se näiden ohjeiden mukaisesti:
+
+        [Ohjeet](https://github.com/hy-tsoha/local-pg)
+
+5. Kun olet käynnistänyt tietokannan toisessa terminaali-ikkunassa komennolla:
+
+        $ start-pg.sh
+
+6. Voit määrittää tietokannan PizzaService repositorion juuressa komennolla:
+
+        venv $ psql < schema.sql
+
+5. Käynnistä sovellus komennolla
+
+        venv $ flask run
