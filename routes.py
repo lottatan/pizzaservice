@@ -65,6 +65,8 @@ def send():
         comment = request.form["comment"]
         if len(comment) > 100:
             return render_template("/error.html", message="Kommentti on liian pitkä")
+        if len(comment) == 0:
+            return render_template("/error.html", message="Kommentti on tyhjä")
         
         if comments.add_comment(comment):
             return render_template("profile.html")
@@ -74,8 +76,6 @@ def rate():
     if request.method == "GET":
         return render_template("profile.html")
     if request.method == "POST":
-        # users.check_csrf()
-
         rating = request.form["rating"]
         if comments.add_rating(rating):
             return render_template("profile.html")

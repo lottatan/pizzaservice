@@ -29,6 +29,10 @@
         <input type="radio" name="rating" value="5"> 5
 
         <input type="submit" value="Lähetä">
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+        <input type="hidden" name="username" value="{{ username }}">
+
     <p>
 
     </form>
@@ -39,6 +43,9 @@
         <br>
 
         <input type="submit" value="Lähetä">
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+        <input type="hidden" name="username" value="{{ username }}">
 
     </form>
 
@@ -59,6 +66,9 @@
             <p>Salasana:<br>
             <input type="password" name="password"></p>
             <input type="submit" value="Kirjaudu">
+            <input type="hidden" name="user_id" value="{{ user_id }}">
+            <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+            <input type="hidden" name="username" value="{{ username }}">
             </form>
             <br>
             <p> Etkö ole vielä rekisteröitynyt? Rekisteröidy tästä!</p>

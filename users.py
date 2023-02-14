@@ -30,7 +30,6 @@ def login(username, password):
             session["csrf_token"] = os.urandom(16).hex()
             return True
 
-
 def logout():
     try:
         del session["user_id"]
