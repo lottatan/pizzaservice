@@ -30,8 +30,8 @@ Tilauksessa voi valita 0-5 kappaletta jokaista pizzaa ja juomaa. Tilaajan täyty
 
 2. Luo uusi ".env" -niminen tiedosto hakemiston juureen ja lisää sinne seuraavat tiedot:
 
-    - DATABASE_URL= <tietokannan-paikallinen-osoite>
-    - SECRET_KEY= <salainen-avain>
+    - DATABASE_URL= tietokannan-paikallinen-osoite
+    - SECRET_KEY= salainen-avain
 
 
 3. Aktivoi virtuaaliympäristö ja asenna sovellukseen riippuvuudet:
@@ -45,7 +45,7 @@ Tilauksessa voi valita 0-5 kappaletta jokaista pizzaa ja juomaa. Tilaajan täyty
 
 4. Jos et ole vielä asentanut psql toimintoja koneellesi, tee se näiden ohjeiden mukaisesti:
 
-        [Ohjeet](https://github.com/hy-tsoha/local-pg)
+[Ohjeet](https://github.com/hy-tsoha/local-pg)
 
 5. Kun olet käynnistänyt tietokannan toisessa terminaali-ikkunassa komennolla:
 
