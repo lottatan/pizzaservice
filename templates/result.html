@@ -1,38 +1,45 @@
 <!DOCTYPE html>
+{% extends "order.html" %}
+{% block content %}
 
-<br>
-<p>
-<a href="http://127.0.0.1:5000/">Takaisin</a>
-</p>
+<html>
+    <head>
+        <title>PizzaService - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='main.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="content">
+            <a href="http://127.0.0.1:5000/">Takaisin</a>
 
+        <p>
+            Valitsit seuraavat pizzat:
+            <br>
 
+            <ol>
+                {% for pizza in pizzas %}
+                <li> {{ pizza }}
+                {% endfor %}
+                </ol>
+                <br>
+                <br>
 
-<p>
-    Valitsit seuraavat pizzat:
-    <br>
+            <ol>
+                {% for drink in drinks %}
+                <li> {{ drink }}
+                {% endfor %}
+            </ol>
+            <br>
+            <br>
 
-    <ol>
-        {% for pizza in pizzas %}
-        <li> {{ pizza }}
-        {% endfor %}
-        </ol>
-        <br>
-        <br>
+            Erikoistoiveet: <br>
+            {{ message }}
+            <br>
+            <br>
 
-    <ol>
-        {% for drink in drinks %}
-        <li> {{ drink }}
-        {% endfor %}
-        </ol>
-        <br>
-        <br>
+            Osoite ja saapumisohjeet: <br>
+            {{ address }}
 
-
-        Erikoistoiveet: <br>
-        {{ message }}
-        <br>
-        <br>
-
-        Osoite ja saapumisohjeet: <br>
-        {{ address }}
-
+        </div>
+        {% endblock %}
