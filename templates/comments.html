@@ -3,8 +3,7 @@
 {% block title %}Arvostelu{% endblock %}
 {% block content %}
 
-<p>
-
+<div class="content">
     Asiakkaiden antama keskimääräinen arvosana väliltä 1-5:  {{ rating }}
     <br>
     <br>
@@ -12,10 +11,11 @@
     Kommentit:
 
     <ol>
-        {% for comment in commentslist %}
-        <li> {{ comment.username }} julkaisi {{ comment.posted }}:  {{ comment.comment }}
-        {% endfor %}
-        </ol>
-        <br>
-        
+    {% for comment in commentslist %}
+    <li> {{ comment.username }} julkaisi {{ comment.posted }}:  {{ comment.comment }}
+    {% endfor %}
+    </ol>
+    <br>
+
+</div>
 {% endblock %}

@@ -4,58 +4,61 @@
 {% block content %}
 
 {% if session.username %}
-<p>Hei {{ session.username }} !</p>
-<br>
+<div class="content">
+    <p>Hei {{ session.username }} !</p>
+    <br>
 
-<p>Tarkastele tilaushistoriaasi <a href="/personal_stats">tästä</a></p>
-
-
-
-<p>Jätä meille arvostelu!</p>
-
-<form action="/rate" method="POST">
+    <p>Tarkastele tilaushistoriaasi <a href="/personal_stats">tästä</a></p>
 
 
-<p>Anna palautetta! Palautteet näkyvät etusivullamme.</p>
 
-    Anna meille arvosana:
+    <p>Jätä meille arvostelu!</p>
 
-    <input type="radio" name="rating" value="1"> 1
-    <input type="radio" name="rating" value="2"> 2
-    <input type="radio" name="rating" value="3"> 3
-    <input type="radio" name="rating" value="4"> 4
-    <input type="radio" name="rating" value="5"> 5
+    <form action="/rate" method="POST">
 
-    <input type="submit" value="Lähetä">
-<p>
 
-</form>
+    <p>Anna palautetta! Palautteet näkyvät etusivullamme.</p>
 
-<form action="/send" method="POST">
+        Anna meille arvosana:
+
+        <input type="radio" name="rating" value="1"> 1
+        <input type="radio" name="rating" value="2"> 2
+        <input type="radio" name="rating" value="3"> 3
+        <input type="radio" name="rating" value="4"> 4
+        <input type="radio" name="rating" value="5"> 5
+
+        <input type="submit" value="Lähetä">
+    <p>
+
+    </form>
+
+    <form action="/send" method="POST">
         Viesti: <br>
         <textarea name="comment" rows="3" cols="50" minlength="1" maxlength="100"></textarea>
         <br>
 
-    <input type="submit" value="Lähetä">
+        <input type="submit" value="Lähetä">
 
-</form>
+    </form>
     
 
-<a href="/logout">Kirjaudu ulos</a>
-{% else %}
+    <a href="/logout">Kirjaudu ulos</a>
+    </div>
+    {% else %}
 
-<form action="/login" method="POST">
-<p>Tunnus:<br>
-<input type="text" name="username"></p>
-<p>Salasana:<br>
-<input type="password" name="password"></p>
-<input type="submit" value="Kirjaudu">
-</form>
-<br>
-<p> Etkö ole vielä rekisteröitynyt? Rekisteröidy tästä!</p>
-
-<a href="/create">Rekisteröidy</a>
-
-{% endif %}
-
+    <div class="content">
+        <form action="/login" method="POST">
+            <p>Tunnus:<br>
+            <input type="text" name="username"></p>
+            <p>Salasana:<br>
+            <input type="password" name="password"></p>
+            <input type="submit" value="Kirjaudu">
+            </form>
+            <br>
+            <p> Etkö ole vielä rekisteröitynyt? Rekisteröidy tästä!</p>
+            
+            <a href="/create">Rekisteröidy</a>
+    
+    {% endif %}
+    </div>
 {% endblock %}

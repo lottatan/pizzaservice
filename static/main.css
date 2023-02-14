@@ -1,0 +1,51 @@
+body {
+    margin: auto;
+    max-width: 45em;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background: linear-gradient(45deg, red, green)
+}
+
+nav li {
+    display: inline-block;
+    padding: 2em 1em;
+    background: white;
+    margin: .2em;
+    border-radius: .5em;
+    margin-top: .5em;
+}
+
+.header {
+    background:white;
+    font-weight: bold;
+    padding: 2em 1em;
+    font-size: 2em;
+    border-radius: .5em;
+    margin-top: .5em;
+    text-align: center;
+}
+
+
+nav li a {
+    text-decoration: none;
+    color: black;
+}
+
+nav li:hover {
+    background-color: white;
+}
+
+
+nav ul {
+    padding: 0;
+    margin: .5em;
+    text-align: center;;
+    border-radius: .5em;
+    margin-top: .5em;
+}
+
+.content {
+    border-radius: .5em;
+    margin-top: .5em;
+    text-align: center;
+    color: white
+}
