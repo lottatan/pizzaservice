@@ -2,7 +2,7 @@ body {
     margin: auto;
     max-width: 45em;
     font-family: 'Helvetica', 'Arial', sans-serif;
-    background: linear-gradient(45deg, red, green)
+    background: linear-gradient(45deg, red, green) no-repeat center center fixed;
 }
 
 nav li {
@@ -47,12 +47,18 @@ nav ul {
     border-radius: .5em;
     margin-top: .5em;
     text-align: center;
-    color: white
+    color: white;
+    text-decoration: none;
 }
 
 .content2 {
     border-radius: .5em;
     margin-top: .5em;
     text-align: left;
+    color: white;
+    text-decoration: none;
+}
+
+nav a{
     color: white;
 }

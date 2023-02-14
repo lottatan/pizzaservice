@@ -14,6 +14,7 @@ def add_order(list):
     sum = 0
     i = 1
 
+
     for item in list:
         sum += int(item)*15
         if int(item) > 0:
@@ -35,10 +36,12 @@ def add_order(list):
                 db.session.commit()
         i += 1
 
+
     sql = text("INSERT INTO orders (username, amount, ordered) VALUES (:username, :amount, NOW())")
     db.session.execute(sql, {"username":username, "amount":sum, "ordered":datetime.datetime.now()})
     db.session.commit()
     return True
+
 
 def add_drink_order(list):
     user_id = users.user_id()
@@ -80,7 +83,11 @@ def add_drink_order(list):
 def user_total_spending(username):
     sql = text("SELECT SUM(amount) FROM orders WHERE username=:username")
     result = db.session.execute(sql, {"username": username})
-    return result.fetchone()[0]
+    return_value = result.fetchone()
+    if return_value == None:
+        return "Nolla"
+    return return_value[0]
+
 
 def all_user_orders(username):
     sql = text("SELECT amount, ordered FROM orders WHERE username=:username")
@@ -90,9 +97,42 @@ def all_user_orders(username):
 def get_favorite_pizza(username):
     sql = text("SELECT pizza FROM pizza_orders WHERE username=:username GROUP BY pizza ORDER BY COUNT(pizza) DESC LIMIT 1")
     result = db.session.execute(sql, {"username": username})
-    return result.fetchone()[0]
+    return_value = result.fetchone()
+    if return_value == None:
+        return "No ordered pizzas"
+    return return_value[0]
 
 def get_favorite_drink(username):
     sql = text("SELECT drink FROM drink_orders WHERE username=:username GROUP BY drink ORDER BY COUNT(drink) DESC LIMIT 1")
     result = db.session.execute(sql, {"username": username})
-    return result.fetchone()[0]
+    return_value = result.fetchone()
+    if return_value == None:
+        return "No ordered drinks"
+    return return_value[0]
+
+def get_most_ordered_pizza():
+    sql = text("SELECT pizza FROM pizza_orders GROUP BY pizza ORDER BY COUNT(pizza) DESC LIMIT 1")
+    result = db.session.execute(sql)
+    return_value = result.fetchone()
+    if return_value == None:
+        return "No ordered pizzas"
+    return return_value[0]
+
+
+def get_most_ordered_drink():
+    sql = text("SELECT drink FROM drink_orders GROUP BY drink ORDER BY COUNT(drink) DESC LIMIT 1")
+    result = db.session.execute(sql)
+    return_value = result.fetchone()
+    if return_value == None:
+        return "No ordered drinks"
+    return return_value[0]
+
+def get_deliverytime_and_amount():
+    sql1 = text("SELECT delivery_time FROM orders ORDER BY DESC LIMIT 1")
+    delivery = db.session.execute(sql1)
+    delivery2 = delivery.fetchone()[0]
+    sql2 = text("SELECT amount FROM orders ORDER BY DESC LIMIT 1")
+    delivery = db.session.execute(sql2)
+    delivery3 = delivery.fetchone()[0]
+
+    return delivery2

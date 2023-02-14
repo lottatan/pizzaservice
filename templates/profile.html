@@ -7,8 +7,9 @@
 <div class="content">
     <p>Hei {{ session.username }} !</p>
     <br>
-
-    <p>Tarkastele tilaushistoriaasi <a href="/personal_stats">tästä</a></p>
+    <nav>
+        <p>Tarkastele tilaushistoriaasi <a href="/personal_stats">tästä</a></p>
+    </nav>
 
 
 
@@ -40,9 +41,10 @@
         <input type="submit" value="Lähetä">
 
     </form>
-    
 
+    <nav>
     <a href="/logout">Kirjaudu ulos</a>
+    </nav>
     </div>
     {% else %}
 
@@ -57,7 +59,9 @@
             <br>
             <p> Etkö ole vielä rekisteröitynyt? Rekisteröidy tästä!</p>
             
+            <nav>
             <a href="/create">Rekisteröidy</a>
+            </nav>
     
     {% endif %}
     </div>

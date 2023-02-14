@@ -3,16 +3,13 @@
 Ideana olisi luoda online-pizzapalvelu, josta voi tilata pizzaa ja juomia.
  
 Kun on luonut käyttäjän, on mahdollista tarkastella omia vanhoja tilauksia, nähdä kuinka paljon on käyttänyt yhteensä rahaa pizzapalveluun,
-suosituimmat tuotteensa, ja jättää arvosteluja ja kommentteja.
+suosituimman pizzansa sekä suosituimman juomansa, ja jättää arvosteluja ja kommentteja.
 
 Pizzapalvelun nettisivulta voi tilataamisen lisäksi nähdä annettuja arvosteluja, sekä kuinka monta tähteä palvelu on keskimäärin saanut.
-Sivulla näkee myös, mitkä ovat olleet suosituimmat pizzat.
+Sivulla näkee myös, mikä on ollut suosituin pizza ja juoma.
 
-Sivulta löytyy pizzojen ainekset ja allergenit, pizzerioiden sijaintitiedot ja tiedot yrityksen henkilökunnasta.
+Tilauksessa voi valita 0-5 kappaletta jokaista pizzaa ja juomaa. Tilaajan täytyy hänen ilmoittaa myös toimitusosoite ja antaa tarkat saapumisohjeet.
 
-Tilauksessa voi ruksia ruutuun tahtomansa pizzat ja juomat. Tilaajan täytyy hänen ilmoittaa myös toimitusosoite ja antaa tarkat saapumisohjeet.
-
-Kun tilaus on tehty, sovellus näyttää myös arvioidun toimituskeston.
 
 ## Sovelluksen toiminnot
 
@@ -33,8 +30,8 @@ Kun tilaus on tehty, sovellus näyttää myös arvioidun toimituskeston.
 
 2. Luo uusi ".env" -niminen tiedosto hakemiston juureen ja lisää sinne seuraavat tiedot:
 
-    DATABASE_URL=<tietokannan-paikallinen-osoite>
-    SECRET_KEY=<salainen-avain>
+    DATABASE_URL= tietokannan-paikallinen-osoite
+    SECRET_KEY= salainen-avain
 
 3. Aktivoi virtuaaliympäristö ja asenna sovellukseen riippuvuudet:
 

@@ -84,7 +84,9 @@ def rate():
 
 @app.route("/order")
 def order():
-    return render_template("order.html")
+    most_ordered_pizza = orders.get_most_ordered_pizza()
+    most_ordered_drink = orders.get_most_ordered_drink()
+    return render_template("order.html", most_pizzas=most_ordered_pizza, most_drinks=most_ordered_drink)
 
 @app.route("/result", methods=["POST"])
 def result():
@@ -92,6 +94,10 @@ def result():
     drinks = request.form.getlist("drink")
     message = request.form["message"]
     address = request.form["address"]
+
+    if len(address) == 0:
+        return render_template("error.html", message="Anna osoite ja saapumisohjeet")
+
     if orders.add_order(pizzas) and orders.add_drink_order(drinks):
         return render_template("result.html", pizzas=pizzas, message=message, drinks=drinks, address=address)
     else:
