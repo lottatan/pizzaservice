@@ -49,3 +49,10 @@ nav ul {
     text-align: center;
     color: white
 }
+
+.content2 {
+    border-radius: .5em;
+    margin-top: .5em;
+    text-align: left;
+    color: white;
+}
