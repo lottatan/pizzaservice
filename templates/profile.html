@@ -28,7 +28,7 @@
         <input type="radio" name="rating" value="4"> 4
         <input type="radio" name="rating" value="5"> 5
 
-        <input type="submit" value="Lähetä">
+        <input id="login-button" type="submit" value="Lähetä">
         <input type="hidden" name="user_id" value="{{ user_id }}">
         <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         <input type="hidden" name="username" value="{{ username }}">
@@ -42,7 +42,7 @@
         <textarea name="comment" rows="3" cols="50" minlength="1" maxlength="100"></textarea>
         <br>
 
-        <input type="submit" value="Lähetä">
+        <input id= "login-button" type="submit" value="Lähetä">
         <input type="hidden" name="user_id" value="{{ user_id }}">
         <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         <input type="hidden" name="username" value="{{ username }}">
@@ -59,13 +59,15 @@
     </div>
     {% else %}
 
+
+
     <div class="content">
         <form action="/login" method="POST">
             <p>Tunnus:<br>
             <input type="text" name="username"></p>
             <p>Salasana:<br>
             <input type="password" name="password"></p>
-            <input type="submit" value="Kirjaudu">
+            <input id="login-button" type="submit" value="Kirjaudu">
             <input type="hidden" name="user_id" value="{{ user_id }}">
             <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
             <input type="hidden" name="username" value="{{ username }}">
@@ -76,7 +78,7 @@
             <nav>
             <a href="/create">Rekisteröidy</a>
             </nav>
-    
+
     {% endif %}
     </div>
 {% endblock %}
