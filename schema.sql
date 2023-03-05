@@ -5,18 +5,21 @@ CREATE TABLE users(
 );
 
 CREATE TABLE comments(
+    id SERIAL PRIMARY KEY,
     username TEXT,
     comment TEXT,
     posted TIMESTAMP
 );
 
 CREATE TABLE ratings(
+    id SERIAL PRIMARY KEY,
     username TEXT,
     rating INTEGER,
     posted TIMESTAMP
 );
 
 CREATE TABLE orders(
+    id SERIAL PRIMARY KEY,
     username TEXT,
     amount INTEGER,
     ordered TIMESTAMP
