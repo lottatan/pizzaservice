@@ -60,7 +60,7 @@ def send():
         return render_template("profile.html")
 
     if request.method == "POST":
-        # users.check_csrf()
+        users.check_csrf()
 
         comment = request.form["comment"]
         if len(comment) > 100:
@@ -76,6 +76,7 @@ def rate():
     if request.method == "GET":
         return render_template("profile.html")
     if request.method == "POST":
+        users.check_csrf()
         rating = request.form["rating"]
         if comments.add_rating(rating):
             return render_template("profile.html")
